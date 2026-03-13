@@ -50,6 +50,10 @@ class DetailOrderPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MainLayout(
+      title: 'Order Summary',
+      showAppBar: true,
+      child: Container(),
+    );
   }
 }
