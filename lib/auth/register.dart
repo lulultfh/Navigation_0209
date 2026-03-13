@@ -15,7 +15,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
 
   @override
-  void dispose(){
+  void dispose() {
     nameController.dispose();
     emailController.dispose();
     passwordController.dispose();
@@ -27,7 +27,17 @@ class _RegisterPageState extends State<RegisterPage> {
     return MainLayout(
       title: 'Register',
       showAppBar: false,
-      child: Container(),
+      child: Container(
+        color: MainLayout.backgroundColor,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
+              child: Form(key: _formKey, child: Column()),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
