@@ -33,53 +33,91 @@ class _RegisterPageState extends State<RegisterPage> {
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
-              child: Form(key: _formKey, child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Image.asset(
-                    'assets/images/haerin.jpg',
-                    height: 180,
-                    fit: BoxFit.contain,
-                    errorBuilder: (context, error, stackTrace) {
-                      return Container(
-                        height: 180,
-                        decoration: BoxDecoration(
-                          color: MainLayout.primaryColor.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(20),
+              child: Form(
+                key: _formKey,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Image.asset(
+                      'assets/images/haerin.jpg',
+                      height: 180,
+                      fit: BoxFit.contain,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          height: 180,
+                          decoration: BoxDecoration(
+                            color: MainLayout.primaryColor.withOpacity(0.1),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: const Center(
+                            child: Icon(
+                              Icons.image_not_supported_outlined,
+                              size: 80,
+                              color: MainLayout.primaryColor,
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    const SizedBox(height: 32),
+                    const Text(
+                      'Create Account',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 32,
+                        fontWeight: FontWeight.w800,
+                        color: MainLayout.textTileColor,
+                        letterSpacing: -0.5,
+                      ),
+                    ),
+                    const SizedBox(height: 8),
+                    Text(
+                      'Sign up to get started',
+                      textAlign: TextAlign.left,
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: MainLayout.textSubtitleColor,
+                      ),
+                    ),
+                    const SizedBox(height: 48),
+
+                    TextFormField(
+                      controller: nameController,
+                      keyboardType: TextInputType.name,
+                      decoration: InputDecoration(
+                        labelText: 'Full Name',
+                        labelStyle: TextStyle(color: MainLayout.labelColor),
+                        prefixIcon: const Icon(
+                          Icons.person_outlined,
+                          color: MainLayout.primaryColor,
                         ),
-                        child: const Center(
-                          child: Icon(
-                            Icons.image_not_supported_outlined,
-                            size: 80,
-                            color: MainLayout.primaryColor,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: BorderSide(
+                            color: MainLayout.inputBorderColor,
                           ),
                         ),
-                      );
-                    },
-                  ),
-                  const SizedBox(height: 32,),
-                  const Text(
-                    'Create Account',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w800,
-                      color: MainLayout.textTileColor,
-                      letterSpacing: -0.5,
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(16),
+                          borderSide: const BorderSide(
+                            color: MainLayout.primaryColor,
+                            width: 2,
+                          ),
+                        ),
+                        filled: true,
+                        fillColor: MainLayout.inputFillColor,
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please enter your name';
+                        }
+                        return null;
+                      },
                     ),
-                  ),
-                  const SizedBox(height: 8,),
-                  Text(
-                    'Sign up to get started',
-                    textAlign: TextAlign.left,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: MainLayout.textSubtitleColor
-                    ),
-                  )
-                ],
-              )),
+                  ],
+                ),
+              ),
             ),
           ),
         ),
