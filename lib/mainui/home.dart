@@ -171,6 +171,79 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
+              const SizedBox(height: 32),
+
+              Text(
+                'Top Menu',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: MainLayout.textTileColor,
+                ),
+              ),
+              const SizedBox(height: 16),
+              InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const OrderPage()),
+                  );
+                },
+                borderRadius: BorderRadius.circular(16),
+                child: Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: MainLayout.inputFillColor,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(color: MainLayout.inputBorderColor),
+                  ),
+                  child: Row(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: MainLayout.primaryColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Icon(
+                          Icons.restaurant_menu_rounded,
+                          color: MainLayout.accentOrange,
+                          size: 32,
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Start New Order',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: MainLayout.textTileColor,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            Text(
+                              'Browse our menu and place your order',
+                              style: TextStyle(
+                                fontSize: 14,
+                                color: MainLayout.textSubtitleColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Icon(
+                        Icons.arrow_forward_ios_rounded,
+                        color: MainLayout.textSubtitleColor,
+                        size: 16,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
