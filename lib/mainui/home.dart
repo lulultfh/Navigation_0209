@@ -50,6 +50,17 @@ class _HomePageState extends State<HomePage> {
           icon: const Icon(Icons.logout_rounded),
         ),
       ],
+      child: Container(
+        color: MainLayout.backgroundColor,
+        width: double.infinity,
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [],
+          ),
+        ),
+      ),
     );
   }
 }
