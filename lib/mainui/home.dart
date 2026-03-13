@@ -244,6 +244,116 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
               ),
+              const SizedBox(height: 32),
+              
+              if (widget.recentOrder != null) ...[
+                Text(
+                  'Recent Activity',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: MainLayout.textTileColor,
+                  ),
+                ),
+                const SizedBox(height: 16),
+                Container(
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(16),
+                    border: Border.all(
+                      color: MainLayout.inputBorderColor,
+                    ),
+                    boxShadow: [
+                      BoxShadow(
+                        color: MainLayout.primaryColor.withOpacity(0.03),
+                        blurRadius: 10,
+                        offset: const Offset(0, 4),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Row(
+                        children: [
+                          Icon(
+                            Icons.check_circle_rounded,
+                            color: Colors.green,
+                          ),
+                          SizedBox(width: 8),
+                          Text(
+                            'Order Successful',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.green,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(width: 12),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Food: \n${widget.recentOrder!['makanan']}',
+                            style: TextStyle(
+                              color: MainLayout.textSubtitleColor,
+                            ),
+                          ),
+                          Text(
+                            'x${widget.recentOrder!['jumlahMakanan']}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            'Drink: \n${widget.recentOrder!['minuman']}',
+                            style: TextStyle(
+                              color: MainLayout.textSubtitleColor,
+                            ),
+                          ),
+                          Text(
+                            'x${widget.recentOrder!['jumlahMinuman']}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 12),
+                      const Divider(),
+                      const SizedBox(height: 8),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          const Text(
+                            'Total Price',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            'Rp ${widget.recentOrder!['totalHarga']}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: MainLayout.primaryColor,
+                              fontSize: 16,
+                            ),
+                          )
+                        ],
+                      )
+                    ],
+                  ),
+                )
+              ],
             ],
           ),
         ),
