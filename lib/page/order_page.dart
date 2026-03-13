@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:navigation_209/main_layout.dart';
+import 'package:navigation_209/page/detail_order_page.dart';
 
 class OrderPage extends StatefulWidget {
   const OrderPage({super.key});
@@ -95,14 +96,161 @@ class _OrderPageState extends State<OrderPage> {
                       color: MainLayout.textTileColor,
                     ),
                   ),
-                  const SizedBox(height: 8,),
+                  const SizedBox(height: 8),
                   const Text(
                     'Fill in the details below to complete your order.',
                     style: TextStyle(
                       fontSize: 14,
-                      color: MainLayout.textSubtitleColor
+                      color: MainLayout.textSubtitleColor,
                     ),
-                  )
+                  ),
+                  const SizedBox(height: 32),
+
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.05),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Row(
+                          children: [
+                            Icon(
+                              Icons.fastfood_rounded,
+                              color: MainLayout.accentOrange,
+                            ),
+                            SizedBox(width: 8),
+                            Text(
+                              'Food Details',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: MainLayout.textTileColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+                        _buildInputDecoration(
+                          controller: makananController,
+                          label: 'Food Name',
+                          icon: Icons.lunch_dining_rounded,
+                          errorMessage: 'Please enter your food order',
+                        ),
+                        const SizedBox(height: 16),
+                        _buildInputDecoration(
+                          controller: jumlahMakananController,
+                          label: 'Quantity (Food)',
+                          icon: Icons.format_list_numbered_rounded,
+                          errorMessage: 'Please enter your food quantity',
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 24),
+
+                  Container(
+                    padding: const EdgeInsets.all(20),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(20),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.05),
+                          blurRadius: 10,
+                          offset: const Offset(0, 4),
+                        ),
+                      ],
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const Row(
+                          children: [
+                            Icon(Icons.local_drink_rounded, color: Colors.blue),
+                            SizedBox(width: 8),
+                            Text(
+                              'Drink Details',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                                color: MainLayout.textTileColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+                        _buildInputDecoration(
+                          controller: minumanController,
+                          label: 'Drink Name',
+                          icon: Icons.coffee_rounded,
+                          errorMessage: 'Please enter your drink order',
+                        ),
+                        const SizedBox(height: 16),
+                        _buildInputDecoration(
+                          controller: jumlahMinumanController,
+                          label: 'Quantity (Drink)',
+                          icon: Icons.format_list_numbered_rounded,
+                          errorMessage: 'Please enter your drink quantity',
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 48),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        calculateTotalPrice();
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailOrderPage(
+                              jumlahMakanan: jumlahMakananController.text,
+                              jumlahMinuman: jumlahMinumanController.text,
+                              makanan: makananController.text,
+                              minuman: minumanController.text,
+                              totalHarga: totalHarga,
+                            ),
+                          ),
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.symmetric(vertical: 18),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      backgroundColor: MainLayout.primaryColor,
+                      foregroundColor: Colors.white,
+                      elevation: 2,
+                      shadowColor: MainLayout.primaryColor.withOpacity(0.5),
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(Icons.receipt_long_rounded),
+                        SizedBox(width: 8),
+                        Text(
+                          'Place Order',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 1.0,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 24),
                 ],
               ),
             ),
