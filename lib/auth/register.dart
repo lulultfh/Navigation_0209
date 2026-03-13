@@ -33,7 +33,33 @@ class _RegisterPageState extends State<RegisterPage> {
           child: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 24),
-              child: Form(key: _formKey, child: Column()),
+              child: Form(key: _formKey, child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Image.asset(
+                    'assets/images/haerin.jpg',
+                    height: 180,
+                    fit: BoxFit.contain,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Container(
+                        height: 180,
+                        decoration: BoxDecoration(
+                          color: MainLayout.primaryColor.withOpacity(0.1),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        child: const Center(
+                          child: Icon(
+                            Icons.image_not_supported_outlined,
+                            size: 80,
+                            color: MainLayout.primaryColor,
+                          ),
+                        ),
+                      );
+                    },
+                  )
+                ],
+              )),
             ),
           ),
         ),
