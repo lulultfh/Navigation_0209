@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:navigation_209/main_layout.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -23,6 +24,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MainLayout(
+      title: 'Register',
+      showAppBar: false,
+      child: Container(),
+    );
   }
 }
