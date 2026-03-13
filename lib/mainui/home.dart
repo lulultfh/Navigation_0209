@@ -87,6 +87,13 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ],
                   ),
+                  CircleAvatar(
+                    radius: 24,
+                    backgroundColor: MainLayout.primaryColor.withOpacity(0.1),
+                    child: Icon(Icons.person,
+                    color: MainLayout.primaryColor,
+                    size: 28,),
+                  )
                 ],
               ),
             ],
