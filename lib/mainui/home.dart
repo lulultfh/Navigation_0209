@@ -64,11 +64,31 @@ class _HomePageState extends State<HomePage> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      
+                      Row(
+                        children: [
+                          Text(
+                            'Hello, User!',
+                            style: TextStyle(
+                              fontSize: 24,
+                              fontWeight: FontWeight.bold,
+                              color: MainLayout.textTileColor,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                        ],
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'What do you want to order today?',
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: MainLayout.textSubtitleColor,
+                        ),
+                      ),
                     ],
-                  )
+                  ),
                 ],
-              )
+              ),
             ],
           ),
         ),
